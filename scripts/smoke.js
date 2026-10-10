@@ -141,6 +141,8 @@ exports.run = async ({ app, rope, addImage, store, openPreview, openSettings, sn
     const sources = await desktopCapturer.getSources({ types: ['screen'], thumbnailSize: { width: 320, height: 200 } });
     assert.ok(sources.length > 0 && sources.some(source => !source.thumbnail.isEmpty()));
     results.push('Windows desktopCapturer returns non-empty screen frame (not saved)');
+    if (process.argv.includes('--marketing')) await require('./marketing').run({ rope, addImage, nativeImage,
+      openPreview, waitFor, capture, track, results });
     await require('./lifecycle-regression').run({ rope, roles, createWindow, beginCapture, finishCapture, openPreview, openSettings, id, results });
     tray.emit('click');
     assert.equal(rope.isVisible(), false, 'Tray clicks during capture must not expose our rope in the screenshot');

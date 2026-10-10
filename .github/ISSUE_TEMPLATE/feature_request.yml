@@ -1,0 +1,16 @@
+name: 提出建议
+description: 告诉我们实际使用场景和希望改善的体验
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你在什么场景遇到什么问题
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 希望怎样改善
+    validations:
+      required: true

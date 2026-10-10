@@ -1,111 +1,109 @@
-# 晒衣绳 · Clothesline for Windows
+<p align="center"><img src="src/icon.svg" width="72" alt="Clothesline 黑白 C 图标"></p>
 
-一个把截图夹在桌面晒衣绳上的本地桌面应用。面向 Windows 10 / 11，当前为 0.1.3 MVP；借鉴晒衣绳生活隐喻，不包含其他应用的素材或代码。
+# 晒衣绳 · Clothesline
 
-![黑白几何 C 图标，以及 16、20、24、32 像素预览](design/icon-preview.png)
+**截图，挂起来。**
 
-## 运行与打包
+把截图夹在桌面的一根晒衣绳上，需要的时候随手打开。适合留住参考图、对照修改、标记问题，再复制或拖给别人。
 
-需要 Node.js 22.12 或更新的版本，以及 npm。首次安装需联网下载 Electron；项目的 `postinstall` 会安装对应的桌面运行程序。如果使用了 `--ignore-scripts`，之后需执行 `node node_modules/electron/install.js`。
+Windows 10 / 11 · x64 · 免费开源 · 当前为 **v0.1.3 预览版**
+
+## 下载就能用
+
+**[下载 Windows 安装版](https://github.com/Lucky-BQR/clothesline/releases/download/v0.1.3/Clothesline-Setup-0.1.3-x64.exe)**　|　**[下载免安装便携版](https://github.com/Lucky-BQR/clothesline/releases/download/v0.1.3/Clothesline-Portable-0.1.3-x64.exe)**
+
+| 版本 | 怎么用 |
+| --- | --- |
+| 安装版，推荐日常使用 | 下载 `.exe`，按提示安装，从桌面快捷方式启动。 |
+| 便携版，适合先试试 | 把 `.exe` 放进自己的文件夹，双击运行。截图和设置仍保存到本机应用数据目录。 |
+
+两种版本都约 106 MB，已包含运行环境，**不用安装 Node.js、npm 或 .NET**。
+
+安装包目前未做代码签名，Windows 可能提示未知发布者。请核对下载来源；需要校验文件时，可使用 [SHA256SUMS.txt](https://github.com/Lucky-BQR/clothesline/releases/download/v0.1.3/SHA256SUMS.txt)。[查看所有版本及更新说明](https://github.com/Lucky-BQR/clothesline/releases)。
+
+## 三步开始用
+
+1. **打开晒衣绳。** 桌面顶部会出现工具栏和绳子，右下角系统托盘会出现 C 图标。单击托盘图标可以重新显示绳子。
+2. **按 `Ctrl + Shift + 2` 截图。** 拖出一个区域，松开鼠标，截图自动挂上去。按 `Esc` 取消。工具栏也支持「全屏」和「窗口」。
+3. **点击图片，标注或分享。** 画箭头、写文字、遮住敏感内容；点「保存标注」，再复制粘贴，或按住 `↗` 拖到接受图片文件的应用。
+
+![实际晒衣绳界面：截图以木夹纸卡展示，工具栏提供截图与收纳操作](docs/images/clothesline-rope.png)
+
+*实际应用界面。图中便签为虚构示例，不含个人资料。*
+
+## 需要的时候，截图就在眼前
+
+- **写东西时留参考：** 把资料中的一段话或参考图挂起来，边看边写。
+- **讨论修改时画重点：** 打开截图，圈出问题或画箭头，再发给对方。
+- **临时保留灵感：** 把值得留下的页面截图放在桌面，不必来回找文件。
+- **忙完后收衣服：** 一键把未固定的图片放进收纳箱，以后还能挂回。
+
+![实际标注界面：画笔、箭头、文字、高亮、马赛克，以及复制和另存为](docs/images/clothesline-editor.png)
+
+*箭头已通过应用的标注工具绘制并保存，原图仍保留。*
+
+## 常用操作
+
+| 想做什么 | 操作 |
+| --- | --- |
+| 区域截图 | `Ctrl + Shift + 2`，或工具栏「区域」。 |
+| 全屏 / 窗口截图 | 工具栏「全屏」/「窗口」，窗口截图需要选择目标窗口。 |
+| 放大、标注 | 点击缩略图。支持画笔、箭头、文字、高亮、马赛克、撤销与重做。文字先输入，再点击图片。 |
+| 复制 / 保存文件 | 右键图片 →「复制图片」/「另存为」，预览页也有对应按钮。 |
+| 拖拽分享 | 按住 `↗` 拖到接受文件拖放的应用。 |
+| 调整顺序 | 按住卡片下方 `↔`，左右拖动；图片多时可横向滚动。 |
+| 留住某张图 | 右键 →「固定」，收衣服时它会继续留在绳子上。 |
+| 收纳 / 恢复 | 点「收衣服」，未固定图片进入收纳箱；在收纳箱点「挂回」。 |
+| 删除 | 右键 →「删除」，确认后原图和标注版本一起进入系统回收站。 |
+| 设置 / 退出 | 工具栏「设置」；退出请右键系统托盘 C 图标 →「退出」。 |
+
+**标注后先点「保存标注」，再复制或分享。** 关闭未保存的预览会提示；恢复原图不会删除旧的已保存标注文件。
+
+## 第一次使用可能会遇到的问题
+
+**绳子不见了？**
+
+点击右下角托盘 C 图标。找不到时，先点 Windows 托盘的 `^` 展开隐藏图标；右键 C 图标也能打开显示、截图和设置菜单。
+
+**截图快捷键没反应？**
+
+可能被其他应用占用。进入「设置」改一个快捷键，例如 `CommandOrControl+Alt+2`，然后保存。
+
+**截图存在哪里？**
+
+默认保存在 `%APPDATA%\clothesline-desktop\`，可在「设置 → 查看本地数据」打开。原图和已保存的标注版本都会保留，重启后仍能查看。「默认保存目录」只控制“另存为”对话框的起始位置，每张截图仍先保存到应用数据目录。
+
+**截图会上传吗？**
+
+应用把截图和设置保存在本机，没有云同步或截图上传功能。主动粘贴或拖到其他应用后，由接收方处理文件。
+
+**窗口截图是黑色的，或拖到微信 / QQ 没成功？**
+
+受保护内容可能无法捕获，最小化窗口请先恢复，也可以改用区域截图。不同版本的聊天软件、浏览器对文件拖放的支持不同，拖不进去时可用「复制图片」再粘贴。
+
+**能换位置、显示器或开机启动吗？**
+
+在设置中选择显示器、顶部 / 底部、是否置顶、自动复制和开机启动。开机启动默认关闭，在安装或打包版本中可启用。
+
+## 预览版的范围
+
+目前只有一根绳子，最多同时挂 80 张；区域截图在选定显示器内完成。暂未提供 OCR、搜索、多绳子、云同步或自动更新。窗口捕获可能受系统保护和分辨率限制。
+
+混合 DPI 多显示器、跨应用拖拽、开机启动和长时间运行仍需要更多实际使用反馈。如果出错，请提供 Windows 版本、应用版本、复现步骤和错误文字，并遮住截图中的个人资料。
+
+**[报告问题](https://github.com/Lucky-BQR/clothesline/issues/new?template=bug_report.yml)**　|　**[提出建议](https://github.com/Lucky-BQR/clothesline/issues/new?template=feature_request.yml)**
+
+## 开发与宣传素材
+
+[开发文档](docs/development.md)包含项目结构、运行、测试、打包和数据恢复说明。[宣传素材包](design/marketing/README.md)提供海报、真实界面截图和可直接使用的介绍文案。
+
+开发运行需要 Node.js 22.12 或更新版本：
 
 ```powershell
+git clone https://github.com/Lucky-BQR/clothesline.git
 cd clothesline
 npm ci
 npm start
 ```
 
-退出：系统托盘右键 → 退出。托盘单击或双击可以重新显示绳子；右键打开菜单，可截图、设置或隐藏绳子。截图过程中单击不会让绳子进入捕获画面。默认区域截图快捷键 `Ctrl+Shift+2`，冲突时可在设置中修改。
-
-```powershell
-npm run check
-npm test
-npm run pack   # release/win-unpacked/Clothesline.exe
-npm run dist   # release/ 下生成 NSIS 安装程序和 portable 便携程序
-node scripts/verify-release.js # 对比打包源码，检查文件格式，生成 SHA256SUMS.txt
-```
-
-打包目标为 Windows x64。安装包未签名；后续公开分发应设置自己的代码签名证书。此项目不自动发布，也不自动上传截图。首次体验可直接运行 `release/Clothesline-Portable-0.1.3-x64.exe`，不需要安装 Node.js。
-
-0.1.3 更新：应用图标改为黑白几何字母 C。Windows 安装包、窗口和托盘共用多尺寸 ICO，包含 16 / 20 / 24 / 32 / 40 / 48 / 64 / 128 / 256 像素。`src/icon.svg` 是可编辑矢量稿；`npm run icons` 可无依赖重新生成全部素材。
-
-0.1.2 修复：托盘图标支持单击显示绳子，保留双击和右键菜单；悬停提示说明操作方式。重复单击不会把绳子隐藏，截图进行中保持绳子隐藏。
-
-0.1.1 修复：关闭截图蒙层、预览或设置时不再读取已销毁窗口的 `webContents`；窗口 ID 在创建时缓存。关闭窗口导致的页面加载中断不会误弹加载失败提示，取消关闭时仍正常提示实际加载错误。取消截图后迟到的捕获结果会丢弃，旧会话的关闭事件不会结束新会话。增加真实窗口连续关闭、强制销毁、延迟显示、取消截图与多窗口正常退出的回归检查。
-
-## 核心操作
-
-- **区域截图**：按快捷键或点击「区域」，在冻结画面上拖动，松开后自动挂绳；`Esc` 取消。当前一次只在设置选定的显示器内选择。
-- **全屏截图**：截取设置选定的显示器。默认主显示器。
-- **窗口截图**：在窗口列表点击目标窗口。截图前隐藏应用自身窗口；受 DRM / 系统保护的内容可能是黑屏，最小化窗口请先恢复。窗口缩略图由 Electron 捕获，超出最大显示器尺寸的窗口可能缩小，不承诺所有窗口原生分辨率。
-- **整理**：点击缩略图打开预览；按住缩略图下方 `↔` 左右拖动排序；绳子挂满后可横向滚动。最多同时挂 80 张。
-- **标注**：画笔、箭头、文字、高亮、马赛克；支持撤销、重做。文字先在工具栏输入，再点击图片。点击「保存标注」后再复制或分享。恢复原图需要确认，旧的已保存标注文件仍保留。关闭有未保存标注的预览会提示。
-- **分享**：按住缩略图或预览页上的 `↗` 按钮，拖到接受文件拖放的应用。传递 PNG 文件；微信、QQ、浏览器的接收行为取决于各应用。也可以右键 → 复制图片，再粘贴。
-- **右键菜单**：预览 / 标注、复制、另存为、固定、收纳、删除。
-- **收衣服**：把未固定截图移到收纳箱，文件仍保留；收纳箱中点击「挂回」恢复。固定截图继续留在绳子上。
-- **删除**：确认后把该截图目录连同原图、标注版本移入系统回收站。
-- **设置**：全局区域快捷键、显示器、顶部 / 底部、置顶、自动复制、另存为默认目录、开机启动。开机启动只在安装或打包后可启用，默认关闭。
-
-所有截图先自动保存在应用数据目录，以保证重启后仍可使用；「默认保存目录」控制另存为对话框，不会自动向该目录写入每一张截图。
-
-## 技术栈与架构
-
-Electron + 原生 JavaScript / HTML / CSS，运行时无第三方界面库，开发依赖只有 Electron 和 electron-builder。无需 .NET、Rust、PowerShell 截图辅助程序或原生模块编译。
-
-Electron 提供 Windows 桌面捕获、透明置顶窗口、全局快捷键、图片剪贴板、系统托盘和原生文件拖放。相较 WPF / Tauri，其安装体积和进程内存开销较大；此版本优先让截图与桌面交互的完整流程可维护、可验证。
-
-```text
-clothesline/
-├─ src/
-│  ├─ main.js       主进程：窗口、截图、托盘、快捷键、IPC、文件操作
-│  ├─ core.js       设置校验、DPI 裁剪、索引持久化与恢复
-│  ├─ preload.js    contextBridge 能力白名单
-│  ├─ icon.svg/.png/.ico 原创图标与多尺寸 Windows 图标
-│  └─ ui/
-│     ├─ index.html 本地页面与 CSP
-│     ├─ app.js     晒衣绳 / 预览标注 / 区域与窗口选择 / 设置
-│     └─ style.css  透明绳子、木夹、纸卡视觉
-├─ scripts/
-│  ├─ check.js      JavaScript 语法检查
-│  ├─ png.js        无依赖 PNG 图标与测试图生成器
-│  ├─ make-icons.js 无依赖矢量、PNG 与多尺寸 ICO 生成器
-│  ├─ lifecycle-regression.js 真实窗口关闭与退出回归
-│  ├─ verify-release.js 打包内容与校验和验证
-│  └─ smoke.js      Electron 实机集成验证
-├─ design/icon-preview.png 图标与托盘尺寸预览
-├─ test/core.test.js
-├─ package.json
-├─ package-lock.json
-└─ LICENSE         MIT
-```
-
-主进程保有文件路径与系统权限。渲染进程开启 `sandbox`、`contextIsolation`，关闭 `nodeIntegration`。预加载只开放指定能力；主进程进一步按窗口角色校验 IPC。所有页面为本地文件，使用 CSP 限制脚本、网络和嵌入内容，禁止页面导航和弹出窗口。PNG 标注校验格式、长度与尺寸。外部分享使用系统文件拖放，不读取其他应用内容。
-
-截图过程中先隐藏应用窗口，再捕获屏幕。区域选择使用捕获的静止画面，选区从 CSS 坐标按实际图像尺寸转换成像素坐标，避免混合缩放比例导致选区错位。屏幕更换、断开或分辨率变化时重新定位绳子。
-
-## 数据与恢复
-
-数据默认位于 `%APPDATA%/clothesline-desktop/`（以 Electron 的实际 `userData` 路径为准，可从设置 → 查看本地数据打开）。
-
-```text
-state.json             当前索引及设置
-state.json.bak         上一次成功保存的索引
-captures/<UUID>/
-  original.png         始终保留的原图
-  edit-<timestamp>.png  每次保存的标注版本
-```
-
-索引以临时文件写入，再重命名替换；损坏索引在恢复前复制为 `.damaged-<timestamp>`，尝试恢复备份。若两份索引都无法读取，原始 PNG 仍保留在 `captures` 中，界面会提示。当前没有自动孤立图片重建索引功能，可手动从目录取回。
-
-## 验证与后续
-
-```powershell
-.\node_modules\.bin\electron.cmd . --smoke
-```
-
-集成检查每次使用独立的 `test-results/smoke-data/run-<timestamp>` 数据目录及合成图片，验证真实窗口 / preload / IPC / Canvas 标注 / 原图保留 / 屏幕捕获能力，输出页面截图和 `test-results/smoke.json`。桌面捕获画面只在内存中检查，不保存用户桌面画面。退出后注销快捷键。
-
-仍需人工验收：混合 DPI 的多显示器、跨应用实际文件拖拽、受保护窗口、安装后的开机启动、长时间运行的性能。当前只有一根绳子；多绳子、搜索、分类、自动更新与签名分发留到后续。
-
-官方接口参考：[desktopCapturer](https://www.electronjs.org/docs/latest/api/desktop-capturer)、[原生文件拖放](https://www.electronjs.org/docs/latest/tutorial/native-file-drag-drop/)、[透明窗口与鼠标穿透](https://www.electronjs.org/docs/latest/api/browser-window)、[安全配置](https://www.electronjs.org/docs/latest/tutorial/security/)。
-
-开发依赖审计：2026-10-10 查询 npm 安全公告，打包器的 `@electron/get → global-agent → roarr → sprintf-js` 链报告 8 项中等风险（同一源问题的传递影响），没有高危或严重项。上游 [GHSA-hp3w-g68c-fv3c](https://github.com/advisories/GHSA-hp3w-g68c-fv3c) 暂无修复版本；这些依赖只用于开发与打包，不放入应用的运行依赖。后续升级打包器时应重新运行 `npm audit`；未执行可能改变打包行为的 `npm audit fix --force`。
+设计受到 macOS [Tendedero](https://github.com/alejandrobujan/tendedero) 的晒衣绳隐喻启发，本项目为独立的 Windows 实现。代码采用 [MIT 许可证](LICENSE)。
