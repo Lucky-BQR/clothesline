@@ -6,11 +6,11 @@
 
 把截图夹在桌面的一根晒衣绳上，需要的时候随手打开。适合留住参考图、对照修改、标记问题，再复制或拖给别人。
 
-Windows 10 / 11 · x64 · 免费开源 · 当前为 **v0.1.3 预览版**
+Windows 10 / 11 · x64 · 免费开源 · 当前为 **v0.1.4 公开测试版**
 
 ## 下载就能用
 
-**[下载 Windows 安装版](https://github.com/Lucky-BQR/clothesline/releases/download/v0.1.3/Clothesline-Setup-0.1.3-x64.exe)**　|　**[下载免安装便携版](https://github.com/Lucky-BQR/clothesline/releases/download/v0.1.3/Clothesline-Portable-0.1.3-x64.exe)**
+**[下载 Windows 安装版](https://github.com/Lucky-BQR/clothesline/releases/download/v0.1.4/Clothesline-Setup-0.1.4-x64.exe)**　|　**[下载免安装便携版](https://github.com/Lucky-BQR/clothesline/releases/download/v0.1.4/Clothesline-Portable-0.1.4-x64.exe)**
 
 | 版本 | 怎么用 |
 | --- | --- |
@@ -19,7 +19,7 @@ Windows 10 / 11 · x64 · 免费开源 · 当前为 **v0.1.3 预览版**
 
 两种版本都约 106 MB，已包含运行环境，**不用安装 Node.js、npm 或 .NET**。
 
-安装包目前未做代码签名，Windows 可能提示未知发布者。请核对下载来源；需要校验文件时，可使用 [SHA256SUMS.txt](https://github.com/Lucky-BQR/clothesline/releases/download/v0.1.3/SHA256SUMS.txt)。[查看所有版本及更新说明](https://github.com/Lucky-BQR/clothesline/releases)。
+安装包目前未做代码签名，Windows 可能提示未知发布者。请核对下载来源；需要校验文件时，可使用 [SHA256SUMS.txt](https://github.com/Lucky-BQR/clothesline/releases/download/v0.1.4/SHA256SUMS.txt)。[查看所有版本及更新说明](https://github.com/Lucky-BQR/clothesline/releases)。
 
 ## 三步开始用
 
@@ -85,7 +85,7 @@ Windows 10 / 11 · x64 · 免费开源 · 当前为 **v0.1.3 预览版**
 
 在设置中选择显示器、顶部 / 底部、是否置顶、自动复制和开机启动。开机启动默认关闭，在安装或打包版本中可启用。
 
-## 预览版的范围
+## 公开测试版的范围
 
 目前只有一根绳子，最多同时挂 80 张；区域截图在选定显示器内完成。暂未提供 OCR、搜索、多绳子、云同步或自动更新。窗口捕获可能受系统保护和分辨率限制。
 
@@ -96,6 +96,8 @@ Windows 10 / 11 · x64 · 免费开源 · 当前为 **v0.1.3 预览版**
 ## 开发与宣传素材
 
 [开发文档](docs/development.md)包含项目结构、运行、测试、打包和数据恢复说明。[宣传素材包](design/marketing/README.md)提供海报、真实界面截图和可直接使用的介绍文案。
+
+准备写公众号介绍？这里有 [完整正文](docs/wechat/article.txt)、[配图与发布说明](docs/wechat/publishing-guide.txt)，以及 [横版封面](design/marketing/wechat/cover.png) 和 [四步功能海报](design/marketing/wechat/features.png)。
 
 开发运行需要 Node.js 22.12 或更新版本：
 

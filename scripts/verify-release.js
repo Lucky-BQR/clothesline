@@ -7,6 +7,10 @@ const root = path.resolve(__dirname, '..');
 const { version } = require('../package.json');
 const archive = path.join(root, 'release/win-unpacked/resources/app.asar');
 const files = asar.listPackage(archive);
+const packaged = JSON.parse(asar.extractFile(archive, 'package.json').toString('utf8'));
+if (packaged.version !== version || packaged.name !== 'clothesline-desktop') {
+  throw new Error(`打包版本不一致：期望 ${version}，实际 ${packaged.version}`);
+}
 const source = ['main.js', 'core.js', 'preload.js', 'icon.png', 'icon.ico', 'icon.svg', 'ui/app.js', 'ui/index.html', 'ui/style.css'];
 for (const file of source) {
   const relative = path.join('src', file);
@@ -20,7 +24,7 @@ const artifacts = [`Clothesline-Setup-${version}-x64.exe`, `Clothesline-Portable
   if (bytes.subarray(0, 2).toString() !== 'MZ') throw new Error(`不是 Windows 可执行程序：${name}`);
   return { name, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') };
 });
-const report = { sourceMatches: true, noDevelopmentFiles: true, artifacts };
+const report = { version, sourceMatches: true, noDevelopmentFiles: true, artifacts };
 fs.mkdirSync(path.join(root, 'test-results'), { recursive: true });
 fs.writeFileSync(path.join(root, 'test-results/release.json'), JSON.stringify(report, null, 2));
 fs.writeFileSync(path.join(root, 'release/SHA256SUMS.txt'), artifacts.map(file => `${file.sha256}  ${file.name}`).join('\n') + '\n');

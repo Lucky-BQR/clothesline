@@ -2,7 +2,7 @@
 
 项目入口：[github.com/Lucky-BQR/clothesline](https://github.com/Lucky-BQR/clothesline)
 
-下载入口：[v0.1.3 Windows 预览版](https://github.com/Lucky-BQR/clothesline/releases/tag/v0.1.3)
+下载入口：[v0.1.4 Windows 公开测试版](https://github.com/Lucky-BQR/clothesline/releases/tag/v0.1.4)
 
 ## 海报
 
@@ -12,7 +12,17 @@
 
 海报中的纸卡是功能隐喻，不代表应用界面。实际界面见下面的截图。
 
+### 霓虹科技风
+
+[下载炫酷版 PNG 原图](poster-neon.png) · 深色背景、发光晒衣绳与悬浮玻璃纸卡。
+
+![晒衣绳霓虹科技风宣传海报](poster-neon.png)
+
+使用内置 imagegen 生成，已检查中文与下载网址；[生成提示词](poster-neon-prompt.txt)。此版本保留前一张海报，作为另一种宣传风格。
+
 ## 实际界面与图标
+
+公众号专用材料见 [发布说明](../../docs/wechat/publishing-guide.txt) 和 [完整正文](../../docs/wechat/article.txt)，配套 [横版封面](wechat/cover.png) 与 [四步功能海报](wechat/features.png)。
 
 - [桌面晒衣绳](../../docs/images/clothesline-rope.png)：真实应用界面，使用虚构便签展示。
 - [预览与标注](../../docs/images/clothesline-editor.png)：实际通过标注工具绘制、保存箭头后的界面。
@@ -28,8 +38,8 @@
 >
 > 适用于 Windows 10 / 11 x64。提供安装版和免安装便携版，下载后就能用。
 >
-> 当前是 v0.1.3 预览版，欢迎试用和反馈。
-> 下载：https://github.com/Lucky-BQR/clothesline/releases/tag/v0.1.3
+> 当前是 v0.1.4 公开测试版，欢迎试用和反馈。
+> 下载：https://github.com/Lucky-BQR/clothesline/releases/tag/v0.1.4
 
 更短的版本：
 
