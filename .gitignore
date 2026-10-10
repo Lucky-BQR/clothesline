@@ -1,0 +1,8 @@
+node_modules/
+release/
+*.log
+test-results/
+backups/
+.env
+.env.*
+!.env.example
