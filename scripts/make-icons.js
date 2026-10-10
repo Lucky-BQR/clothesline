@@ -5,26 +5,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { png } = require('./png');
 const color = hex => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
-function shapes(small = false) {
+function shapes() {
   const list = [];
   const add = (kind, fill, data, rotate = 0) => list.push({ kind, fill, ...data, rotate });
-  // Matte graphite, warm ivory and a restrained brass accent; no illustration.
-  add('round', '#20272B', { x: 10, y: 10, w: 236, h: 236, r: 52 });
-  // A quiet cord and a single geometric peg preserve the clothesline metaphor.
-  const cord = [];
-  for (let i = 0; i <= 24; i++) { const x = 30 + i * 196 / 24; cord.push([x, 73 + 9 * (1 - ((x - 128) / 98) ** 2)]); }
-  for (let i = 24; i >= 0; i--) { const x = 30 + i * 196 / 24; cord.push([x, 73 + (small ? 6 : 4) + 9 * (1 - ((x - 128) / 98) ** 2)]); }
-  add('polygon', '#BDA47A', { points: cord });
-  add('round', '#F3F0E7', { x: 62, y: 83, w: 132, h: 128, r: 12 });
-  if (!small) {
-    // Four capture corners communicate a screenshot without a decorative photo.
-    for (const [x, y, dx, dy] of [[86, 125, 1, 1], [170, 125, -1, 1], [86, 183, 1, -1], [170, 183, -1, -1]]) {
-      add('round', '#697171', { x: dx > 0 ? x : x - 17, y: dy > 0 ? y : y - 4, w: 17, h: 4, r: 1 });
-      add('round', '#697171', { x: dx > 0 ? x : x - 4, y: dy > 0 ? y : y - 17, w: 4, h: 17, r: 1 });
-    }
-  }
-  add('round', '#BDA47A', { x: small ? 114 : 116, y: 44, w: small ? 28 : 24, h: 70, r: 4 });
-  add('round', '#20272B', { x: small ? 114 : 116, y: 78, w: small ? 28 : 24, h: 4, r: 0 });
+  add('round', '#191919', { x: 10, y: 10, w: 236, h: 236, r: 52 });
+  // One open geometric C. The clear gap stays readable in the notification area.
+  add('round', '#F6F6F3', { x: 55, y: 54, w: 146, h: 148, r: 34 });
+  add('round', '#191919', { x: 82, y: 81, w: 92, h: 94, r: 9 });
+  add('round', '#191919', { x: 138, y: 102, w: 80, h: 52, r: 0 });
   return list;
 }
 function local(shape, x, y) {
@@ -49,7 +37,7 @@ function contains(s, x, y) {
   return inside;
 }
 function painter(size) {
-  const list = shapes(size <= 24).map(s => ({ ...s, rgb: color(s.fill) }));
+  const list = shapes().map(s => ({ ...s, rgb: color(s.fill) }));
   return (x, y) => {
     const sum = [0, 0, 0]; let hits = 0;
     for (let sy = 0; sy < 4; sy++) for (let sx = 0; sx < 4; sx++) {
@@ -68,7 +56,7 @@ function svg() {
     if (s.kind === 'circle') return `<circle cx="${s.x}" cy="${s.y}" r="${s.r}" ${style}/>`;
     return `<polygon points="${s.points.map(p => p.join(',')).join(' ')}" ${style}/>`;
   }).join('\n  ');
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">\n  <title id="title">Clothesline — a screenshot held by a wooden peg</title>\n  ${body}\n</svg>\n`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">\n  <title id="title">Clothesline — geometric C</title>\n  ${body}\n</svg>\n`;
 }
 exports.build = () => {
   const root = path.resolve(__dirname, '..');
@@ -88,7 +76,7 @@ exports.build = () => {
   });
   fs.writeFileSync(path.join(root, 'src/icon.ico'), Buffer.concat([header, ...images]));
   const previewSize = 576;
-  const large = painter(192), small = sizes.slice(0, 4).map(painter);
+  const large = painter(192), small = sizes.slice(0, 4).map(size => painter(size));
   const board = png(previewSize, 256, (x, y) => {
     let bg = x < 288 ? [248, 246, 236] : [29, 38, 33];
     let fg;
